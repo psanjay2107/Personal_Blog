@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="d-flex justify-content-between align-items-center col-12">
+        <h1 class="text-center">Welcome {{user.first_name}}!!!</h1>
+        <div class="d-flex col-4 justify-content-around">
+            <a href="/home/recipe" class="btn btn-primary">Home</a>
+            <a href="/recipes" class="btn btn-primary">Recipes</a>
+            <a href="/logout" class="btn btn-info">Logout</a>
+
+        </div>
+
+    </nav>
+    <div class="card col-10 mx-auto my-5 bg-dark text-light">
+        <div class="card-body">
+            <h2 class="card-title text-primary">{{recipe.title}}</h2>
+            <p class="card-text">Time to Cook:  {{recipe.time}}</p>
+            <p class="card-text">Instructions:  {{recipe.instructions}}</p>
+            <img src="../static/uploads/recipe/{{recipe.title}}/{{recipe.title}}.png" alt="#picture of chana masala" width="200" height="200">
+        </div>
+        <div>
+            <a href="/edit/recipe/{{recipe.id}}">Edit</a>
+            <a href="/destroy/recipe/{{recipe.id}}">Delete</a>
+        </div>
+    </div>
+</body>
+</html>
