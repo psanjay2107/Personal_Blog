@@ -7,14 +7,22 @@
     <title>Food Blog</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body>
-    <h1 class="text-center">Welcome {{user.first_name}} Food Blog</h1>
-    <a href="/home/recipe" class="btn btn-info">Home</a>
-    <a href="/recipes" class="btn btn-info">Recepies</a>
-    <a href="/new/recipe" class="btn btn-info">Add a new Recipe</a>
-    <a href="/logout" class="btn btn-info">Logout</a>
-    <a href="/user_page" class="btn btn-info">Dashboard</a>
-    <h2>Eat Healthy , Live Healthy</h2>
+<body class="bg-warning">
+    <h1 class="text-center">{{user.first_name}}'s Food Blog</h1>
+
+    <nav class="navbar">
+        <a href="/home/recipe" class="btn btn-info">Home</a>
+        <a href="/home/aboutme" class="btn btn-info">About {{user.first_name}}</a>
+        <a href="/recipes" class="btn btn-info">Recepies</a>
+        <a href="/new/recipe" class="btn btn-info">Add a new Recipe</a>
+        <a href="/user_page" class="btn btn-info">Dashboard</a>
+        <a href="/logout" class="btn btn-info">Logout</a>
+    </nav>
+    <div class="d-flex justify-content-around"></div>
+        <div class="col-6 p-4">
+            <img src="../static/food.jpg" alt="Food Image" height="400" width="700">
+        </div>
+    </div>
 
 </body>
 </html>

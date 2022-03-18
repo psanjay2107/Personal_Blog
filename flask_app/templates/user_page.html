@@ -7,22 +7,42 @@
     <title>User Page</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body>
-    <h1 class="text-center">Welcome {{user.first_name}}</h1>
-    <a href="/logout" class="btn btn-info">Logout</a>
+<body class="bg-warning">
+    <h1 class="text-center text-dark">Welcome {{user.first_name}}</h1>
+    <nav class="navbar">
+        <a href="/logout" class="btn btn-info">Logout</a>
+        <a href="/write_about" class="btn btn-info">Update Profile</a>
+    </nav>
+    <div class="d-flex justify-content-around">
+        <div class="col-6 mx-auto justify-content-around p-5">
+            <h2 class="text-center m-4 text-dark">Select Blog</h2>
+            <div class="d-flex justify-content-around">
+                <a href="/foodblog" class="btn btn-info">Food Blog</a>
+                <a href="/travelphotoblog" class="btn btn-info"> Travel & Photography</a>
+            </div>         
+        </div>
+        
+        <div class="table-scroll col-3">
 
-    <a href="/foodblog" class="btn btn-info">Food Blog</a>
-
-    <a href="/travelphotoblog" class="btn btn-info"> Travel & Photography</a>
-
-    
-
-    {% for rep in lst %}
-    {% if rep.id != session.user_id %}
-    <div class="col-8 mx-auto">
-        <a href="/show_blog/{{rep.id}}" class="btn btn-info">{{rep.first_name}} {{rep.last_name}}</a>
+            <table class="table table-hover table-borderless">
+                <thead>
+                    <tr>
+                        <th>Other Bloggers</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for rep in lst %}
+                        <tr>
+                            <td>
+                                {% if rep.id != session.user_id %}
+                                <a href="/show_blog/{{rep.id}}" class="btn btn-info">{{rep.first_name}} {{rep.last_name}}</a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>        
     </div>
-    {% endif %}
-    {% endfor %}
 </body>
 </html>

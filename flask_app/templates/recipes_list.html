@@ -7,25 +7,29 @@
     <title>Food Blog</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body>
-    <h1 class="text-center">Welcome {{user.first_name}} Food Blog</h1>
-    <a href="/home/recipe" class="btn btn-info">Home</a>
-    <a href="/recipes" class="btn btn-info">Recepies</a>
-    <a href="/new/recipe" class="btn btn-info">Add a new Recipe</a>
-    <a href="/logout" class="btn btn-info">Logout</a>
-    <a href="/dashboard" class="btn btn-info">Dashboard</a>
-    <h2>List of Recipes</h2>                       
+<body class="bg-warning">
+    <nav class="navbar m-3">
+        <a href="/home/recipe" class="btn btn-info">Home</a>
+        <a href="/home/aboutme" class="btn btn-info">About {{user.first_name}}</a>
+        <a href="/recipes" class="btn btn-info">Recepies</a>
+        <a href="/new/recipe" class="btn btn-info">Add a new Recipe</a>
+        <a href="/user_page" class="btn btn-info">Dashboard</a>
+        <a href="/logout" class="btn btn-info">Logout</a>
+    </nav>                      
     
-    {% for recipe in recipes %}
-            {% if recipe.user_id == session.user_id %}
-                <div class="col-8 mx-auto">
-                <img src="../static/uploads/recipe/{{recipe.title}}/{{recipe.title}}.png" alt="#picture of chana masala" width="100" height="100">
-                <a href="/recipe/{{recipe.id}}">{{recipe.title}}</a> 
-                <a href="#">{{recipe.user_id}}</a>
-                <a href="#">{{session.user_id}}</a>
-                </div>
-            {% endif %}
-    {% endfor %}
+    <h2 class="text-center">List of Recepies</h2>
+
+    <div class="justify-content-around">
+        {% for recipe in recipes %}
+                {% if recipe.user_id == session.user_id %}
+                    <div class="col-6 mx-auto p-2">
+                    <img src="../static/uploads/recipe/{{recipe.title}}/{{recipe.title}}.png" alt="#picture of chana masala" width="100" height="100">
+                    <a href="/recipe/{{recipe.id}}">{{recipe.title}}</a> 
+                    </div>
+                {% endif %}
+        {% endfor %}
+    </div>
+    
     
 </body>
 </html>

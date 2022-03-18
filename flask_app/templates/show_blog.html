@@ -7,25 +7,34 @@
     <title>User Blog</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body>
-    <h1 class="text-center">Welcome {{user.first_name}}</h1>
-    <a href="/logout" class="btn btn-info">Logout</a>
-
-    <a href="/user_page" class="btn btn-info">Dashboard</a>
-
-    {% for recipe in recipes %}
-        <div class="col-8 mx-auto">
-        <img src="../static/uploads/recipe/{{recipe.title}}/{{recipe.title}}.png" alt="#picture of chana masala" width="100" height="100">
-        <a href="/recipe/{{recipe.id}}">{{recipe.title}}</a> 
-        
+<body class="bg-warning">
+    <h1 class="text-center m-2">Welcome to {{user.first_name}}'s Blog</h1>
+    <nav class="d-flex justify-content-around m-3">
+        <div class="d-flex col-4 justify-content-around">
+            <a href="/user_page" class="btn btn-info">Dashboard</a>
+            <a href="/logout" class="btn btn-info">Logout</a>
         </div>
-    {% endfor %}
-
-    {% for place in places %}
+    </nav> 
+    <h2 class="text-center"> About {{user.first_name}}</h2>
+    <p class="text-center">{{user.about_me}}</p>
+    <h3 class="text-center">{{user.first_name}}'s Recepies</h3>
     <div class="col-8 mx-auto">
-        <img src="../static/uploads/travel/{{place.location}}/{{place.location}}.png" alt="#picture of place" width="100" height="100">
-        <a href="/place/{{place.id}}">{{place.location}}</a> 
+        {% for recipe in recipes %}
+        <div class="col-8 mx-auto m-1">
+            <img src="../static/uploads/recipe/{{recipe.title}}/{{recipe.title}}.png" alt="#picture of chana masala" width="100" height="100">
+            <a href="/recipe/{{recipe.id}}">{{recipe.title}}</a> 
+        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
+    
+    <h3 class="text-center">{{user.first_name}}'s Travel Places</h3>
+    <div class="col-8 mx-auto">
+        {% for place in places %}
+        <div class="col-8 mx-auto m-1">
+            <img src="../static/uploads/travel/{{place.location}}/{{place.location}}.png" alt="#picture of place" width="100" height="100">
+            <a href="/place/{{place.id}}">{{place.location}}</a> 
+        </div>
+        {% endfor %}
+    </div>
 </body>
 </html>

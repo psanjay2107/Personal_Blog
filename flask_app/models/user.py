@@ -12,12 +12,18 @@ class User:
         self.last_name = data['last_name']
         self.email = data['email']
         self.password = data['password']
+        self.about_me = data['about_me']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
 
     @classmethod
     def add_user(cls,data):
         query = "INSERT INTO users (first_name,last_name,email,password) VALUES(%(first_name)s,%(last_name)s,%(email)s,%(password)s)"
+        return connectToMySQL(cls.db).query_db(query,data)
+
+    @classmethod
+    def about(cls, data):
+        query = "UPDATE users SET about_me=%(about_me)s, updated_at=NOW() WHERE id = %(id)s;"
         return connectToMySQL(cls.db).query_db(query,data)
 
     @classmethod

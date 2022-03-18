@@ -71,6 +71,38 @@ def travel_and_photo_blog():
     }
     return render_template("travel_photo.html",user=User.get_by_id(data))
 
+@app.route('/write_about')
+def about_yourself():
+    if 'user_id' not in session:
+        return redirect('/logout')
+    data ={
+        'id': session['user_id']
+    }
+    return render_template("About.html",user=User.get_by_id(data))
+
+@app.route('/update_about',methods=['POST'])
+def update_about_yourself():
+    if 'user_id' not in session:
+        return redirect('/logout')
+    data ={
+        'id': session['user_id'],
+        "about_me": request.form["about_me"]
+    }
+    User.about(data)
+    return redirect('/user_page')
+    #return render_template("About.html",user=User.get_by_id(data))
+
+@app.route('/home/aboutme')
+def about_me():
+    if 'user_id' not in session:
+        return redirect('/logout')
+    data ={
+        'id': session['user_id'],
+    }
+    #return redirect('/user_page')
+    return render_template("About_me.html",user=User.get_by_id(data))
+
+
 @app.route('/show_blog/<int:id>')
 def show_blog(id):
     if 'user_id' not in session:

@@ -7,13 +7,20 @@
     <title>User Page</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body>
-    <h1 class="text-center">Welcome {{user.first_name}} Travel and Photo Blog</h1>
-    <a href="/home/travel" class="btn btn-info">Home</a>
-    <a href="/places" class="btn btn-info">Places</a>
-    <a href="/new/place" class="btn btn-info">Add a new place</a>
-    <a href="/logout" class="btn btn-info">Logout</a>
-    <a href="/user_page" class="btn btn-info">Dashboard</a>
-    <h2>Live Laugh Love Eat </h2>
+<body class="bg-warning">
+    <h1 class="text-center">{{user.first_name}}'s Travel and Photo Blog</h1>
+    <nav class="navbar m-2- justify-content-between">
+        <a href="/home/travel" class="btn btn-info">Home</a>
+        <a href="/home/aboutme" class="btn btn-info">About {{user.first_name}}</a>
+        <a href="/places" class="btn btn-info">Places</a>
+        <a href="/new/place" class="btn btn-info">Add a new place</a>
+        <a href="/user_page" class="btn btn-info">Dashboard</a>
+        <a href="/logout" class="btn btn-info">Logout</a>
+
+    </nav>
+    <div class="col-6 p-4">
+        <img src="../static/travel.jpg" alt="travel photo" height="400" width="700">
+    </div>
+    
 </body>
 </html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body class="bg-warning">
+    <nav class="d-flex justify-content-around align-items-center p-2">
+        <div class="d-flex col-6 justify-content-around">
+            <a href="/user_page" class="btn btn-primary">Dashboard</a>
+        </div>
+    </nav>
+    <form action="/update_about" method="post" enctype="multipart/form-data" class="col-11 p-4 my-4 bg-dark text-light mx-auto">
+        {% with messages = get_flashed_messages(category_filter=['user']) %}
+            {% if messages %}
+            <div class="alert alert-danger" role="alert">
+                <strong>Alert!!!!!</strong>
+                    {% for message in messages %}
+                    <p>{{message}}</p>
+                    {% endfor %}
+            </div>
+            {% endif %}
+        {% endwith %}
+        
+        <div class="d-flex justify-content-between col-9">
+            <div class="col-4">
+                <div class="form-group">
+                    <label for="about_me">About me:</label>
+                    <textarea name="about_me"  cols="30" rows="5" class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="col-4">
+                <input type="submit" value="Add Your Info" class="btn btn-primary">
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
