@@ -74,8 +74,8 @@ def nav_new_place():
 def create_place():
         if 'user_id' not in session:
             return redirect('/logout')
-        #if not Recipe.validate_recipe(request.form):
-        #    return redirect('/new/recipe
+        if not Place.validate_place(request.form):
+            return redirect('/new/place')
 		
         data = {
             "location": request.form["location"],
@@ -113,8 +113,8 @@ def destroy_place(id):
 def update_place():
     if 'user_id' not in session:
         return redirect('/logout')
-    #if not Recipe.validate_recipe(request.form):
-    #    return redirect('/new/recipe')
+    if not Place.validate_place(request.form):
+        return redirect('/new/place')
     data = {
         "location": request.form["location"],
         "date": request.form["date"],

@@ -96,8 +96,8 @@ def nav_user_page():
 def create_recipe():
         if 'user_id' not in session:
             return redirect('/logout')
-        #if not Recipe.validate_recipe(request.form):
-        #    return redirect('/new/recipe
+        if not Recipe.validate_recipe(request.form):
+            return redirect('/new/recipe')
 		
         data = {
             "title": request.form["title"],
@@ -113,8 +113,8 @@ def create_recipe():
 def update_recipe():
     if 'user_id' not in session:
         return redirect('/logout')
-    #if not Recipe.validate_recipe(request.form):
-    #    return redirect('/new/recipe')
+    if not Recipe.validate_recipe(request.form):
+        return redirect('/new/recipe')
     data = {
         "title": request.form["title"],
         "time": request.form["time"],

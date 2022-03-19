@@ -23,7 +23,7 @@ class User:
 
     @classmethod
     def about(cls, data):
-        query = "UPDATE users SET about_me=%(about_me)s, updated_at=NOW() WHERE id = %(id)s;"
+        query = "UPDATE users SET about_me=%(about_me)s, email=%(email)s, password=%(password)s, updated_at=NOW() WHERE id = %(id)s;"
         return connectToMySQL(cls.db).query_db(query,data)
 
     @classmethod
@@ -48,6 +48,19 @@ class User:
         if len(results) < 1:
             return False
         return cls(results[0])
+
+    @classmethod
+    def get_fname_by_id(cls,data):
+        query = "SELECT first_name FROM users where users.id = %(id)s;"
+        results = connectToMySQL(cls.db).query_db(query,data)
+        #usr = []
+        #for row in results:
+        #    usr.append(row[1])
+        print('row print')
+        #print(usr[0])
+        print(results[0])
+        #return (results[0])
+        
 
     @staticmethod
     def validate_register(user):

@@ -56,3 +56,20 @@ class Recipe:
             #print(row['date_made'])
             all_recipe.append( cls(row) )
         return all_recipe
+    
+    @staticmethod
+    def validate_recipe(recipe):
+        is_valid = True
+        query = "SELECT * FROM recipe WHERE id = %(id)s;"
+        results = connectToMySQL(Recipe.db).query_db(query,recipe)
+        
+        if len(recipe['title']) < 3:
+            flash("title should be at least 3 characters","recipe")
+            is_valid= False
+        if len(recipe['instructions']) < 3:
+            flash("instructions should be at least 3 characters","recipe")
+            is_valid= False
+        if len(recipe['time']) < 3:
+            flash("time should have more characters","recipe")
+            is_valid= False
+        return is_valid

@@ -55,3 +55,20 @@ class Place:
             #print(row['date_made'])
             all_places.append( cls(row) )
         return all_places
+
+    @staticmethod
+    def validate_place(place):
+        is_valid = True
+        query = "SELECT * FROM places WHERE id = %(id)s;"
+        results = connectToMySQL(Place.db).query_db(query,place)
+        
+        if len(place['location']) < 3:
+            flash("location should be at least 3 characters","place")
+            is_valid= False
+        if len(place['description']) < 3:
+            flash("description should be at least 3 characters","place")
+            is_valid= False
+        if place['date'] == "":
+            flash("enter valid date","place")
+            is_valid= False
+        return is_valid

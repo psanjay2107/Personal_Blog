@@ -9,9 +9,12 @@
 </head>
 <body class="bg-warning">
     <h1 class="text-center text-dark">Welcome {{user.first_name}}</h1>
+    <img class="m-3" src="../static/uploads/user/{{user.first_name}}{{user.last_name}}{{user.id}}/{{user.first_name}}{{user.last_name}}{{user.id}}profile.png" alt="avatar" onerror="this.onerror=null;this.src='../static/profile_pic.jpg';" height="100" width="100">
+
     <nav class="navbar">
-        <a href="/logout" class="btn btn-info">Logout</a>
         <a href="/write_about" class="btn btn-info">Update Profile</a>
+        <a href="/logout" class="btn btn-info">Logout</a>
+        
     </nav>
     <div class="d-flex justify-content-around">
         <div class="col-6 mx-auto justify-content-around p-5">

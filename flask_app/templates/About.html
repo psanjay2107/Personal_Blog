@@ -13,7 +13,7 @@
             <a href="/user_page" class="btn btn-primary">Dashboard</a>
         </div>
     </nav>
-    <form action="/update_about" method="post" enctype="multipart/form-data" class="col-11 p-4 my-4 bg-dark text-light mx-auto">
+    <form action="/update_about/{{user.first_name}}/{{user.last_name}}" method="post" enctype="multipart/form-data" class="col-11 p-4 my-4 bg-dark text-light mx-auto">
         {% with messages = get_flashed_messages(category_filter=['user']) %}
             {% if messages %}
             <div class="alert alert-danger" role="alert">
@@ -29,10 +29,37 @@
             <div class="col-4">
                 <div class="form-group">
                     <label for="about_me">About me:</label>
-                    <textarea name="about_me"  cols="30" rows="5" class="form-control"></textarea>
+                    <textarea name="about_me"  cols="30" rows="5" class="form-control" >{{user.about_me}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="email">Change Email:</label>
+                    <input type="text" name="email" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="password">Change Password:</label>
+                    <input type="password" name="password" class="form-control">
                 </div>
             </div>
             <div class="col-4">
+                <dl>
+                    <p>
+                        <label for="foodblog_img">Upload Foodblog picture:</label>
+                        <input type="file" name="foodblog_img" autocomplete="off" required>
+                    </p>
+                </dl>
+                <dl>
+                    <p>
+                        <label for="travelblog_img">Upload Travelblog picture:</label>
+                        <input type="file" name="travelblog_img" autocomplete="off" required>
+                    </p>
+                </dl>
+                <dl>
+                    <p>
+                        <label for="profile_img">Upload Profile picture:</label>
+                        <input type="file" name="profile_img" autocomplete="off" required>
+                    </p>
+                </dl>
+                <br>
                 <input type="submit" value="Add Your Info" class="btn btn-primary">
                 </div>
             </div>
